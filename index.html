@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/thinline.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+    <title>Library</title>
+</head>
+<body>
+    <div class="header"><h1>My Library</h1>
+        <div class="btnhead">  
+            <button class="modal__button">Add Book </button>
+        </div>
+       
+    </div> 
+  
+    <div class="book__list">
+
+    </div>
+
+    <div class="book__modal">
+        <!-- Modal content -->
+        <div class="modal__content">
+          <div class="modal__close"><i class="uit uit-multiply"></i></div>
+          <form action="" class="book__form">
+            <h2>Add New Book</h2>
+            <div class="field">
+                <label for="ftitle">Title:</label>
+                <input type="text" id="ftitle" name="ftitle" placeholder="Title of the book" />
+                <small></small>
+            </div>
+            <div class="field">
+                <label for="fauthor">Author:</label>
+                <input type="text" id="fauthor" name="fauthor" placeholder="Author of the book" />
+                <small></small>
+            </div>
+            <div class="field">
+                <label for="fpages">Pages:</label>
+                <input type="text" id="fpages" name="fpages" placeholder="Number of pages in the book" />
+                <small></small>
+            </div>
+            <div class="field">
+                <label for="fread">Completed?</label>
+                <input type="checkbox" name="fread" unchecked> 
+                <small></small>
+            </div>
+            <div class="field">
+                <button type="submit" class="form__submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    <div class="footer">
+        <p> made by Michelle Yu</p> <a href="http://github.com/myu230"><i class='bx bxl-github'></i></a>
+    </div>
+</body>
+</html>
