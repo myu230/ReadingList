@@ -2,7 +2,7 @@ const library = document.querySelector('.book__list');
 let myLibrary = [];
 
 class Book{
-    constructor(title, author, pages, read, rating) {
+    constructor(title, author, pages, read, rating = 0) {
         this.title = title;
         this.author = author;
         this.pages = pages;
@@ -13,7 +13,7 @@ class Book{
 
 loadData();
 if (myLibrary.length == 0){
-    myLibrary.push(new Book("Matilda", "Roald Dahl", "232", true, "5"));
+    myLibrary.push(new Book("Matilda", "Roald Dahl", "232", true, 4));
 }
 
 DisplayLibrary();
@@ -36,6 +36,7 @@ function DisplayLibrary(){
         const newPages  = document.createElement('div');
         const newRead  = document.createElement('div');
         const newClose = document.createElement('div');
+        const newRating  = document.createElement('div');
         let status = '';
     
         newBook.className = 'book';
@@ -63,11 +64,30 @@ function DisplayLibrary(){
         newClose.className = 'close close__icon';
         newClose.innerHTML = '<i class="uit uit-multiply"></i>';
 
+        newRating.className = 'rating';
+        let rating = myLibrary[i].rating;
+  
+        let temprate ="";
+        let starcount = 1;
+        const empty = 5 - rating;
+        for (let k = 0; k < rating; k++){
+            temprate += '<i class="uis uis-favorite star" id="'+i+'star'+starcount+'"></i>';
+            starcount++;
+        }
+        for (let j = 0; j < empty; j++){
+            temprate += '<i class="uit uit-favorite star" id="'+i+'star'+starcount+'"></i>';  
+            starcount++;
+        }
+        
+        newRating.innerHTML = temprate;
+        newClose.innerHTML = '<i class="uit uit-multiply"></i>';
+        
         newBook.appendChild(newTitle);
         newBook.appendChild(newAuthor);
         newBook.appendChild(newPages);
         newBook.appendChild(newRead);
         newBook.appendChild(newClose);
+        newBook.appendChild(newRating);
 
         toAdd.appendChild(newBook);
     }
@@ -79,6 +99,19 @@ function DisplayLibrary(){
 
     const closeButton = document.querySelectorAll('.close');
     closeButton.forEach(closebtn => closebtn.addEventListener('click', delBook));
+
+    const stars = document.querySelectorAll('.star');
+    stars.forEach(str => str.addEventListener('click', changeStar));
+}
+
+
+function changeStar(e){
+    const num = e.target.id;
+    const starindex = num.slice(-1);
+    const bookindex = num.slice(0, -5);
+    myLibrary[bookindex].rating = starindex;
+
+    DisplayLibrary();
 }
 
 function changeRead(e){
