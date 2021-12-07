@@ -193,7 +193,7 @@ function saveData(){
 
 function loadData(){
     let reLib = localStorage.getItem("key_library");
-    if (reLib.length > 0) {
+    if (reLib) {
         myLibrary = JSON.parse(reLib);
         
     } else {
