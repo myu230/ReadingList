@@ -11,7 +11,11 @@ class Book{
     }
 }
 
-myLibrary.push(new Book("Matilda", "Roald Dahl", "232", true));
+loadData();
+if (myLibrary.length == 0){
+    myLibrary.push(new Book("Matilda", "Roald Dahl", "232", true, "5"));
+}
+
 DisplayLibrary();
 
 function AddBookToLibrary(book) {
@@ -19,12 +23,13 @@ function AddBookToLibrary(book) {
 }
 
 function DisplayLibrary(){
+    saveData();
+    
     library.innerHTML = '';
     let toAdd = document.createDocumentFragment();
 
     for (let i = 0; i < myLibrary.length; i++){
-        console.log(myLibrary[i]);
-        
+     
         const newBook = document.createElement('div');
         const newTitle  = document.createElement('div');
         const newAuthor  = document.createElement('div');
@@ -180,3 +185,18 @@ form.addEventListener('submit', (event) => {
         form.reset();
 	}
 });
+
+function saveData(){
+    localStorage.setItem("key_library", JSON.stringify(myLibrary));
+
+}
+
+function loadData(){
+    let reLib = localStorage.getItem("key_library");
+    if (reLib.length > 0) {
+        myLibrary = JSON.parse(reLib);
+        
+    } else {
+        myLibrary = [];
+    }
+}
