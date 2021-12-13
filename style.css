@@ -119,6 +119,13 @@ button{
     color: rgb(94, 94, 94);
 }
 
+.rating{
+    position: absolute;
+    font-size: 25px;
+    left: 20px;
+    bottom: 25px;
+}
+
 .footer p{
     padding-bottom: 2px;
 }
